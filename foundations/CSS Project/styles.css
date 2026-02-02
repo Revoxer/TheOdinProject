@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Navigation CSS */
+nav {
+  background-color: #1f2937;
+  padding: 10px 100px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #f9faf8;
+  font-size: 24px;
+}
+
+.links {
+  display: flex;
+  color: #e5e7eb;
+  font-size: 18px;
+  text-decoration: none;
+  gap: 10px;
+}
+
+/* Hero CSS */
+hero {
+  background-color: #1f2937;
+  padding: 30px 100px;
+  display: flex;
+}
+
+.text-hero {
+  flex: 1;
+}
+
+.text-hero h1 {
+  color: #f9faf8;
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.text-hero p {
+  color: #e5e7eb;
+  font-size: 18px;
+}
+
+.text-hero button {
+  background-color: #3882f6;
+  color: white;
+  margin-top: 10px;
+  border: 0px;
+  height: 20px;
+  width: 80px;
+  border-radius: 25px;
+}
+
+.image-hero {
+  flex: 1;
+}
+
+.image-hero img {
+  height: auto;
+  width: 100%;
+}
+
+/* Header CSS */
+
+header {
+  display: flex;
+  padding: 30px 100px;
+  align-items: center;
+  flex-direction: column;
+}
+
+header h1 {
+  color: #1f2937;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.header-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.product {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product img {
+  height: 120px;
+  width: 120px;
+  border: 2px solid #3882f6;
+  border-radius: 25px;
+}
+
+/* Quote CSS */
+
+#quote {
+  background-color: #e5e7eb;
+  padding: 30px 100px;
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 20px;
+}
+
+.quote h2 {
+  font-size: 36px;
+  font-weight: 300;
+  color: #1f2937;
+}
+
+/* Action CSS */
+
+#action {
+  padding: 30px 100px;
+}
+
+.action-container {
+  background-color: #3882f6;
+  padding: 15px 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.action-container button {
+  background-color: #3882f6;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+/* Footer CSS */
+footer {
+  padding: 30px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f2937;
+  color: white;
+}
