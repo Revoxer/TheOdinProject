@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+  height: 800px;
+}
+
+.container > div {
+  border: 1px solid black;
+}
+
+button {
+  margin-bottom: 20px;
+}
