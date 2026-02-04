@@ -30,8 +30,7 @@
   gap: 10px;
 }
 
-.body button,
-.body div {
+.body button {
   width: 80px;
   height: 80px;
   font-size: 30px;

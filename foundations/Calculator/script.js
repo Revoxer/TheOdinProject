@@ -48,6 +48,22 @@ function getSymbol(symbol) {
       secondNumber += symbol;
       display.innerText = secondNumber;
     }
+  } else if (symbol === ".") {
+    if (secondNumber) {
+      if (secondNumber.includes(symbol)) {
+        return;
+      }
+      secondNumber += symbol;
+      display.innerText = secondNumber;
+    } else if (firstNumber) {
+      if (firstNumber.includes(symbol)) {
+        return;
+      }
+      firstNumber += symbol;
+      display.innerText = firstNumber;
+    } else {
+      return;
+    }
   } else {
     if (firstNumber && operator && secondNumber) {
       const result = operate(operator, firstNumber, secondNumber);
@@ -56,6 +72,7 @@ function getSymbol(symbol) {
       firstNumber = result.toString();
       secondNumber = "";
     }
+
     operator = symbol;
   }
 }
