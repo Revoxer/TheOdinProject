@@ -106,3 +106,43 @@ function removeItem() {
     return;
   }
 }
+
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+
+  switch (key) {
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+      getSymbol(key);
+      break;
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+      getSymbol(key);
+      break;
+    case "Enter":
+      getResult();
+      break;
+    case "Escape":
+      getClear();
+      break;
+    case "Backspace":
+      removeItem();
+      break;
+    case ".":
+    case ",":
+      getSymbol(".");
+      break;
+    default:
+      break;
+  }
+});
