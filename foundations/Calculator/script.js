@@ -92,3 +92,17 @@ function getClear() {
   result = null;
   return (display.innerText = "");
 }
+
+function removeItem() {
+  if (secondNumber) {
+    const newNumber = secondNumber.slice(0, -1);
+    secondNumber = newNumber;
+    display.innerText = secondNumber;
+  } else if (firstNumber) {
+    const newNumber = firstNumber.slice(0, -1);
+    firstNumber = newNumber;
+    display.innerText = firstNumber;
+  } else {
+    return;
+  }
+}
