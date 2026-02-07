@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  background-color: rgb(240, 240, 240);
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  width: 80vw;
+}
+
+/* Header CSS */
+
+header {
+  grid-row: 1;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.add_button {
+  margin-top: 25px;
+  padding: 10px 30px;
+  background-color: orange;
+  border: 0;
+  border-radius: 25px;
+  font-weight: 700;
+}
+
+.add_button:hover .toogle_button:hover {
+  background-color: rgb(244, 158, 0);
+}
+
+.add_button:active,
+.toggle_button:active,
+.delete_button:active {
+  transform: scale(98%);
+}
+
+#modal {
+  padding: 30px;
+  border: none;
+  border-left: 5px solid orange;
+  border-radius: 10px;
+  width: 300px;
+  max-height: 500px;
+}
+
+#modal[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.check_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: orange;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px orange;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch::before {
+  content: "No";
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.switch::after {
+  content: "Yes";
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #999;
+}
+
+.close_button:hover {
+  color: #333;
+}
+
+/* Main CSS */
+
+.books_list {
+  padding: 15px;
+  gap: 15px;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  width: 100%;
+}
+
+.book_card {
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 5px solid orange;
+}
+
+.book_card h2 {
+  margin: 0;
+}
+
+.book_card h3 {
+  margin: 5px 0px;
+}
+
+.book_card p {
+  margin: 5px 0px;
+}
+
+.delete_button,
+.toggle_button {
+  margin-top: 10px;
+  border: 0;
+  border-radius: 25px;
+  padding: 5px 15px;
+}
+
+.delete_button {
+  background-color: rgb(253, 56, 56);
+}
+
+.toggle_on {
+  background-color: rgb(0, 219, 0);
+}
+
+.delete_button:hover {
+  background-color: rgb(228, 0, 0);
+}
