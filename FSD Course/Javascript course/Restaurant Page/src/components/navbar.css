@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar button {
+  border: 0;
+  background-color: transparent;
+  color: #c23923;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.navbar button:hover {
+  color: #982b1b;
+}
+
+.navbar button:active {
+  transform: scale(98%);
+}

@@ -1,0 +1,18 @@
+#home_container {
+  background-color: rgb(255, 166, 0, 0.8);
+  padding: 100px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#home_container h2 {
+  margin-bottom: 20px;
+}
+
+#home_container h3 {
+  margin: 20px 0px;
+}
+
+#home_container span {
+  font-weight: 700;
+}

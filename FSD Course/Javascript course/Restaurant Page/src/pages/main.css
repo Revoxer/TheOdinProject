@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: rgb(214, 214, 214);
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+#app {
+  display: grid;
+  grid-template-rows: 100px 1fr;
+}
+
+#content {
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

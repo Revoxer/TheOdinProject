@@ -1,0 +1,27 @@
+#menu_container {
+  background-color: rgb(255, 166, 0, 0.8);
+  padding: 100px;
+  border-radius: 25px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+#menu_container img {
+  width: auto;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#menu_container div {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  border-radius: 25px;
+  color: white;
+}
+
+#menu_container div:hover {
+  transform: scale(105%);
+}
