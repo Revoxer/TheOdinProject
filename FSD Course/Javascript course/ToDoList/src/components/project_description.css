@@ -1,0 +1,13 @@
+#project_description {
+  padding: 40px 50px;
+}
+
+.project_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#project_description span {
+  font-size: 0.8rem;
+}

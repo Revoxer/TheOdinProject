@@ -1,0 +1,56 @@
+#project_panel {
+  background-color: rgba(209, 209, 209, 0.6);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 30px;
+  box-shadow: 0px 2px 5px black;
+}
+
+#project_panel h2 {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.new_project_btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #ac92dc;
+  color: white;
+  border: 0;
+  box-shadow: 1px 1px 2px #7e66aa;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1rem;
+}
+
+.new_project_btn:hover {
+  background-color: #7e66aa;
+}
+
+.new_project_btn:active {
+  transform: scale(98%);
+}
+
+.project {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.project:hover {
+  cursor: pointer;
+}
+
+#project_panel .delete_project_btn {
+  all: unset;
+  color: red;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+#project_panel .delete_project_btn:hover {
+  color: rgb(218, 0, 0);
+}

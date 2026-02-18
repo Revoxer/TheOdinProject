@@ -1,0 +1,21 @@
+#header {
+  height: 100px;
+  background-color: rgba(87, 36, 182, 0.5);
+  box-shadow: 2px 0px 5px purple;
+  padding: 0px 150px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(63, 62, 62);
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  font-style: normal;
+}
+
+#header img {
+  width: auto;
+  height: 64px;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8));
+}
