@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: min(100vh);
+  background-color: rgb(213, 213, 213);
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+#data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-size: 1.5rem;
+}
