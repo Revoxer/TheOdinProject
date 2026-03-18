@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a0e1a;
+  --surface: #0f1628;
+  --border: #1e3a5f;
+  --accent: #00d4ff;
+  --accent-dim: #0099bb;
+  --hit: #ff3d3d;
+  --miss: #1e3a5f;
+  --ship: #1a4a6e;
+  --ship-border: #2a6a9e;
+  --text: #c8e6f0;
+  --text-dim: #5a8a9f;
+  --grid-size: 40px;
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, #0a1f3d 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #001a33 0%, transparent 50%);
+  color: var(--text);
+  font-family: "Share Tech Mono", monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+  margin: 2rem 0 0.5rem;
+}
+
+#app {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-height: 520px;
+  justify-content: flex-end;
+}
+
+.board-container h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.board-container h2.active-label {
+  color: var(--accent);
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+#player-board,
+#computer-board {
+  display: grid;
+  grid-template-columns: repeat(10, var(--grid-size));
+  grid-template-rows: repeat(10, var(--grid-size));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 0 40px rgba(0, 212, 255, 0.05),
+    inset 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+#player-board div,
+#computer-board div {
+  width: var(--grid-size);
+  height: var(--grid-size);
+  border: 1px solid var(--border);
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Ship cells (only shown on player board) */
+#player-board div.ship {
+  background-color: var(--ship);
+  border-color: var(--ship-border);
+  box-shadow: inset 0 0 8px rgba(0, 212, 255, 0.1);
+}
+
+/* Hit cells */
+#player-board div.hit,
+#computer-board div.hit {
+  background-color: var(--hit);
+  border-color: #cc0000;
+  box-shadow:
+    inset 0 0 10px rgba(255, 0, 0, 0.4),
+    0 0 8px rgba(255, 61, 61, 0.3);
+  position: relative;
+}
+
+#player-board div.hit::after,
+#computer-board div.hit::after {
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Miss cells */
+#player-board div.miss,
+#computer-board div.miss {
+  background-color: var(--miss);
+  border-color: #2a4a6f;
+  position: relative;
+}
+
+#player-board div.miss::after,
+#computer-board div.miss::after {
+  content: "·";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent-dim);
+}
+
+#player-board div.preview {
+  background-color: rgba(0, 212, 255, 0.2);
+  border-color: var(--accent);
+}
+
+#player-board div.preview-invalid {
+  background-color: rgba(255, 61, 61, 0.2);
+  border-color: var(--hit);
+}
+
+/* Computer board hover — only on non-attacked cells */
+#computer-board div:not(.hit):not(.miss) {
+  cursor: crosshair;
+}
+
+#computer-board div:not(.hit):not(.miss):hover {
+  background-color: rgba(0, 212, 255, 0.1);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 12px rgba(0, 212, 255, 0.2);
+}
+
+/* Game over message */
+#game-over {
+  display: none;
+  margin-top: 2rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#game-over.visible {
+  display: flex;
+}
+
+#restart-btn,
+#rotate-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 2rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+#restart-btn:hover,
+#rotate-btn:hover {
+  background-color: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+#setup-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  margin-bottom: 0.5rem;
+}
+
+#setup-info {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
