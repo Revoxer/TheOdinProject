@@ -1,0 +1,53 @@
+/* ─── SCOREBOARD ─── */
+.scoreboard {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  border: var(--pixel) solid var(--border);
+  box-shadow: 4px 4px 0 #000, inset 0 1px 0 rgba(255,255,255,.05);
+  padding: 12px 28px;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 24px;
+}
+
+.score-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .45rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.score-value {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.6rem;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 rgba(245,197,24,.3);
+  line-height: 1;
+}
+
+.score-box.best .score-value {
+  color: var(--green);
+  text-shadow: 2px 2px 0 rgba(61,220,132,.3);
+}
+
+.score-total {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+.score-divider {
+  width: var(--pixel);
+  height: 50px;
+  background: var(--border);
+}
+
+@media (max-width: 500px) {
+  .scoreboard { padding: 10px 12px; }
+  .score-box  { padding: 0 12px; }
+}

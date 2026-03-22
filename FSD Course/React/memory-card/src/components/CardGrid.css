@@ -1,0 +1,10 @@
+/* ─── CARD GRID ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 500px) {
+  .card-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+}

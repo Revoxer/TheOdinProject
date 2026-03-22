@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0d0d1a;
+  --surface: #161628;
+  --card-bg: #1e1e38;
+  --border: #3a3a6e;
+  --yellow: #f5c518;
+  --red: #e84545;
+  --green: #3ddc84;
+  --text: #e8e8f8;
+  --muted: #6a6a9a;
+  --pixel: 2px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Nunito", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
