@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #eceff1;
+  --bg-second: #fff;
+  --text: #212121;
+  --main-color: #2e7d32;
+  --tag: #a8d5a2;
+  --btn: #4caf50;
+  --btn-hover: #388e3c;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
