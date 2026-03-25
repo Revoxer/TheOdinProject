@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <h1><%= title %></h1>
+  <a href="/" class="back-link">← Back to messages</a>
+</section>
+
+<section class="form-section">
+  <form method="POST" action="/new" class="message-form">
+    <div class="field">
+      <label for="messageUser">Your Name</label>
+      <input
+        type="text"
+        id="messageUser"
+        name="messageUser"
+        placeholder="e.g. Amando"
+        required
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="field">
+      <label for="messageText">Message</label>
+      <textarea
+        id="messageText"
+        name="messageText"
+        rows="4"
+        placeholder="Write something..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">Send Message</button>
+      <a href="/" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</section>
+
+<%- include('partials/footer') %>
