@@ -1,0 +1,75 @@
+<%- include('../partials/header', { title: category.name, currentPath: '/categories' }) %>
+
+<div class="breadcrumb">
+  <a href="/categories">Categories</a>
+  <span>/</span>
+  <span><%= category.name %></span>
+</div>
+
+<div class="page-header">
+  <div>
+    <h1><%= category.name %></h1>
+    <% if (category.description) { %>
+      <p class="sub"><%= category.description %></p>
+    <% } %>
+  </div>
+  <div style="display:flex;gap:0.5rem">
+    <a href="/categories/<%= category.id %>/edit" class="btn btn-ghost">Edit</a>
+    <a href="/items/new?category_id=<%= category.id %>" class="btn btn-primary">+ Add product</a>
+  </div>
+</div>
+
+<% if (items.length === 0) { %>
+  <div class="empty">
+    <div class="empty-icon">◻</div>
+    <p>No products in this category.</p>
+    <a href="/items/new?category_id=<%= category.id %>" class="btn btn-primary">+ Add product</a>
+  </div>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+            <td style="color:var(--muted);max-width:280px">
+              <%= item.description ? item.description.substring(0, 60) + (item.description.length > 60 ? '…' : '') : '—' %>
+            </td>
+            <td>$<%= parseFloat(item.price).toFixed(2) %></td>
+            <td>
+              <span class="badge <%= item.quantity > 0 ? 'badge-accent' : '' %>">
+                <%= item.quantity %> pcs
+              </span>
+            </td>
+            <td style="text-align:right">
+              <a href="/items/<%= item.id %>/edit" class="btn btn-ghost" style="padding:4px 12px">Edit</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<div style="margin-top:3rem">
+  <div class="danger-zone">
+    <h3>Danger Zone</h3>
+    <p>Deleting the category <strong><%= category.name %></strong> will leave its products (<%= items.length %> pcs) in the database without an assigned category.</p>
+    <form method="POST" action="/categories/<%= category.id %>?_method=DELETE" class="inline-form"
+      onsubmit="return confirm('Are you sure you want to delete the <%= category.name %> category?')">
+      <input type="password" name="adminPassword" placeholder="Admin password" required>
+      <button type="submit" class="btn btn-danger">Delete category</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

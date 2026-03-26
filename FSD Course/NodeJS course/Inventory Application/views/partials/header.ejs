@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> — StockBase</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">⬡ StockBase</a>
+  <a href="/categories" <%= currentPath && currentPath.startsWith('/categories') ? 'class="active"' : '' %>>Categories</a>
+  <a href="/items" <%= currentPath && currentPath.startsWith('/items') ? 'class="active"' : '' %>>Products</a>
+</nav>
+
+<main>

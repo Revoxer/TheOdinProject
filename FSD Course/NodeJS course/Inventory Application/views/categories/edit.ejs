@@ -1,0 +1,44 @@
+<%- include('../partials/header', { title: 'Edit ' + category.name, currentPath: '/categories' }) %>
+
+<div class="breadcrumb">
+  <a href="/categories">Categories</a>
+  <span>/</span>
+  <a href="/categories/<%= category.id %>"><%= category.name %></a>
+  <span>/</span>
+  <span>Edit</span>
+</div>
+
+<div class="page-header">
+  <div>
+    <h1>Edit Category</h1>
+    <p class="sub"><%= category.name %></p>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form method="POST" action="/categories/<%= category.id %>?_method=PUT">
+
+    <div class="form-group">
+      <label for="name">Category Name *</label>
+      <input type="text" id="name" name="name" value="<%= category.name %>" required autofocus>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description"><%= category.description || '' %></textarea>
+    </div>
+
+    <div class="form-group" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+      <label for="adminPassword">Admin Password *</label>
+      <input type="password" id="adminPassword" name="adminPassword" placeholder="Required to save changes" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <a href="/categories/<%= category.id %>" class="btn btn-ghost">Cancel</a>
+    </div>
+
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

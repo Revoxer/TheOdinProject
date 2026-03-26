@@ -1,0 +1,86 @@
+<%- include('../partials/header', { title: item.name, currentPath: '/items' }) %>
+
+<div class="breadcrumb">
+  <a href="/items">Products</a>
+  <% if (item.category_name) { %>
+    <span>/</span>
+    <a href="/categories/<%= item.category_id %>"><%= item.category_name %></a>
+  <% } %>
+  <span>/</span>
+  <span><%= item.name %></span>
+</div>
+
+<div class="page-header">
+  <div>
+    <h1><%= item.name %></h1>
+    <% if (item.category_name) { %>
+      <p class="sub">
+        <span class="badge badge-accent"><%= item.category_name %></span>
+      </p>
+    <% } %>
+  </div>
+  <a href="/items/<%= item.id %>/edit" class="btn btn-ghost">Edit product</a>
+</div>
+
+<div class="detail">
+  <div class="detail-main">
+    <div class="info-block">
+      <h3>Details</h3>
+
+      <div class="info-row">
+        <span class="label">Name</span>
+        <span class="value"><%= item.name %></span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Description</span>
+        <span class="value" style="max-width:340px;text-align:right">
+          <%= item.description || '—' %>
+        </span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Category</span>
+        <span class="value">
+          <% if (item.category_name) { %>
+            <a href="/categories/<%= item.category_id %>" style="color:var(--accent)"><%= item.category_name %></a>
+          <% } else { %>
+            —
+          <% } %>
+        </span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Product ID</span>
+        <span class="value" style="color:var(--muted)">#<%= item.id %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-sidebar">
+    <div class="info-block" style="text-align:center;padding:2rem">
+      <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Price</p>
+      <div class="price-big">$<%= parseFloat(item.price).toFixed(2) %></div>
+    </div>
+
+    <div class="info-block" style="text-align:center;padding:2rem">
+      <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem">Stock level</p>
+      <div class="price-big" style="color:<%= item.quantity > 0 ? 'var(--accent)' : 'var(--danger)' %>">
+        <%= item.quantity %>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:0.25rem">pcs</p>
+    </div>
+
+    <div class="danger-zone">
+      <h3>Delete product</h3>
+      <p>This action cannot be undone.</p>
+      <form method="POST" action="/items/<%= item.id %>?_method=DELETE" class="inline-form"
+        onsubmit="return confirm('Are you sure you want to delete <%= item.name %>?')">
+        <input type="password" name="adminPassword" placeholder="Admin password" required>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

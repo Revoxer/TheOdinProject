@@ -1,0 +1,56 @@
+<%- include('../partials/header', { title: 'Products', currentPath: '/items' }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Products</h1>
+    <p class="sub"><%= items.length %> items in stock</p>
+  </div>
+  <a href="/items/new" class="btn btn-primary">+ New product</a>
+</div>
+
+<% if (items.length === 0) { %>
+  <div class="empty">
+    <div class="empty-icon">◻</div>
+    <p>No products found. Add the first one!</p>
+    <a href="/items/new" class="btn btn-primary">+ New product</a>
+  </div>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock level</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+            <td>
+              <% if (item.category_name) { %>
+                <span class="badge badge-accent"><%= item.category_name %></span>
+              <% } else { %>
+                <span style="color:var(--muted)">—</span>
+              <% } %>
+            </td>
+            <td style="font-weight:500">$<%= parseFloat(item.price).toFixed(2) %></td>
+            <td>
+              <span class="badge <%= item.quantity > 0 ? 'badge-accent' : '' %>">
+                <%= item.quantity %> pcs
+              </span>
+            </td>
+            <td style="text-align:right">
+              <a href="/items/<%= item.id %>/edit" class="btn btn-ghost" style="padding:4px 12px">Edit</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

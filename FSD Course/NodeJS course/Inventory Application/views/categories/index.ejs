@@ -1,0 +1,32 @@
+<%- include('../partials/header', { title: 'Categories', currentPath: '/categories' }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Categories</h1>
+    <p class="sub"><%= categories.length %> categories in database</p>
+  </div>
+  <a href="/categories/new" class="btn btn-primary">+ New category</a>
+</div>
+
+<% if (categories.length === 0) { %>
+  <div class="empty">
+    <div class="empty-icon">◻</div>
+    <p>No categories found. Add the first one!</p>
+    <a href="/categories/new" class="btn btn-primary">+ New category</a>
+  </div>
+<% } else { %>
+  <div class="grid">
+    <% categories.forEach(cat => { %>
+      <a href="/categories/<%= cat.id %>" class="card">
+        <div class="card-title"><%= cat.name %></div>
+        <div class="card-meta"><%= cat.item_count %> products</div>
+        <% if (cat.description) { %>
+          <div class="card-desc"><%= cat.description %></div>
+        <% } %>
+        <span class="arrow">↗</span>
+      </a>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

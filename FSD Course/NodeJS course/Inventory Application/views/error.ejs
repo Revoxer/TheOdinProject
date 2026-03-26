@@ -1,0 +1,10 @@
+<%- include('partials/header', { title: 'Error', currentPath: '' }) %>
+
+<div class="error-page">
+  <div class="code">!</div>
+  <h2>An error occurred</h2>
+  <p><%= message || 'Something went wrong.' %></p>
+  <a href="/" class="btn btn-ghost">← Back to home</a>
+</div>
+
+<%- include('partials/footer') %>

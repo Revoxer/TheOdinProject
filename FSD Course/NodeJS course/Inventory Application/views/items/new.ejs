@@ -1,0 +1,70 @@
+<%- include('../partials/header', { title: 'New Product', currentPath: '/items' }) %>
+
+<div class="breadcrumb">
+  <a href="/items">Products</a>
+  <span>/</span>
+  <span>New</span>
+</div>
+
+<div class="page-header">
+  <div>
+    <h1>New Product</h1>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form method="POST" action="/items">
+
+    <div class="form-group">
+      <label for="name">Product Name *</label>
+      <input type="text" id="name" name="name" placeholder="e.g. Laptop Dell XPS 15" required autofocus>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" placeholder="Product description…"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="price">Price ($) *</label>
+        <input type="number" id="price" name="price" step="0.01" min="0" placeholder="0.00" required>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity (pcs) *</label>
+        <input type="number" id="quantity" name="quantity" min="0" placeholder="0" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category_id">Category</label>
+      <select id="category_id" name="category_id">
+        <option value="">— no category —</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat.id %>"
+            <%= (typeof preselected !== 'undefined' && preselected == cat.id) ? 'selected' : '' %>>
+            <%= cat.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Add product</button>
+      <a href="/items" class="btn btn-ghost">Cancel</a>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // Pre-select category if coming from a category page
+  const params = new URLSearchParams(window.location.search);
+  const catId = params.get('category_id');
+  if (catId) {
+    const sel = document.getElementById('category_id');
+    if (sel) sel.value = catId;
+  }
+</script>
+
+<%- include('../partials/footer') %>

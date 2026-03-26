@@ -1,0 +1,69 @@
+<%- include('../partials/header', { title: 'Edit ' + item.name, currentPath: '/items' }) %>
+
+<div class="breadcrumb">
+  <a href="/items">Products</a>
+  <span>/</span>
+  <a href="/items/<%= item.id %>"><%= item.name %></a>
+  <span>/</span>
+  <span>Edit</span>
+</div>
+
+<div class="page-header">
+  <div>
+    <h1>Edit product</h1>
+    <p class="sub"><%= item.name %></p>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form method="POST" action="/items/<%= item.id %>?_method=PUT">
+
+    <div class="form-group">
+      <label for="name">Product Name *</label>
+      <input type="text" id="name" name="name" value="<%= item.name %>" required autofocus>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description"><%= item.description || '' %></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="price">Price ($) *</label>
+        <input type="number" id="price" name="price" step="0.01" min="0"
+          value="<%= parseFloat(item.price).toFixed(2) %>" required>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity (pcs) *</label>
+        <input type="number" id="quantity" name="quantity" min="0" value="<%= item.quantity %>" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category_id">Category</label>
+      <select id="category_id" name="category_id">
+        <option value="">— no category —</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat.id %>" <%= item.category_id == cat.id ? 'selected' : '' %>>
+            <%= cat.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+      <label for="adminPassword">Admin Password *</label>
+      <input type="password" id="adminPassword" name="adminPassword"
+        placeholder="Required to save changes" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <a href="/items/<%= item.id %>" class="btn btn-ghost">Cancel</a>
+    </div>
+
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
